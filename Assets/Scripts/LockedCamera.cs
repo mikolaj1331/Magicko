@@ -14,8 +14,6 @@ public class LockedCamera : MonoBehaviour
     
     void Update()
     {
-        float distance = cameraSpeed * Time.deltaTime;
-        Vector3 target_position_z = new Vector3(transform.position.x, transform.position.y, target.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, target_position_z, distance);
+        transform.position = new Vector3(transform.position.x,transform.position.y,target.position.z);
     }
 }
