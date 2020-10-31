@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+using Magicko.Core;
+
 namespace Magicko.Movement
 {
-    public class MovementHandler : MonoBehaviour
+    public class MovementHandler : MonoBehaviour, IAction
     {
         NavMeshAgent navigationAgent;
 
@@ -33,6 +35,18 @@ namespace Magicko.Movement
         public void MoveTowards(Vector3 destination)
         {
             navigationAgent.destination = destination;
+            navigationAgent.isStopped = false;
+        }
+
+        public void MoveAction(Vector3 destination)
+        {
+            GetComponent<ActionsManager>().BeginAction(this);
+            MoveTowards(destination);
+        }
+
+        public void CancelAction()
+        {
+            navigationAgent.isStopped = true;
         }
     }
 }

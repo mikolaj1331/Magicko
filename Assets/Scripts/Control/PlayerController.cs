@@ -12,23 +12,43 @@ namespace Magicko.Control
     {
         void Update()
         {
-            HandleMovement();
-            HandleCombat();
+            if(HandleMovement()) return;
+            if(HandleCombat()) return;
         }
 
-        private void HandleMovement()
+        private bool HandleMovement()
         {
             // Getting input values
             float xPosInput = CrossPlatformInputManager.GetAxis("Horizontal");
             float zPosInput = CrossPlatformInputManager.GetAxis("Vertical");
-            //Moving the character
-            GetComponent<MovementHandler>().MoveTowards(new Vector3(transform.position.x + xPosInput, transform.position.y, transform.position.z + zPosInput));
+
+            if(xPosInput != 0 || zPosInput != 0)
+            {
+                //Moving the character
+                GetComponent<MovementHandler>().MoveAction(new Vector3(transform.position.x + xPosInput, transform.position.y, transform.position.z + zPosInput));
+                Debug.Log("Character is moving");
+                return true;
+            }
+            else
+            {
+                Debug.Log("Character is standing");
+                return false;
+            }
         }
 
-        private void HandleCombat()
+        private bool HandleCombat()
         {
             var target = GetComponent<TargetFinder>().target;
-            GetComponent<CombatHandler>().Attack(target);
+            if(target != null)
+            {
+                GetComponent<CombatHandler>().Attack(target);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
+
+// (DONE) TODO: Change handle movement and handle combat into bool (implemented action manager that cancels actions which shouldnt happen simultaneously) 
+// (DONE) TODO: Player does not rotate towards the target it's shooting at (used transform method lookat() in a way that rotates gameobject towards x and z position of target)
