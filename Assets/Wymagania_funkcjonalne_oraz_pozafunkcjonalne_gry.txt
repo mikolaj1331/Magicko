@@ -1,0 +1,18 @@
+Lista funkcji które powinny znaleźć się w grze:
+
+1. (COMPLETED) Postać powinna poruszać się po mapie za pomocą instrukcji wprowadzanych przez gracza
+2. (COMPLETED) Postać powinna automatycznie atakować przeciwników gdy nie otrzymuje instrukcji ruchu
+3. Przeciwnicy walczący w zwarciu powinni poruszać się po najkrótszej drodze do celu (gracza)
+4. Przeciwnicy walczący na dystans powinni nieustannie atakować gracza
+5. Przeciwnicy walczący na dystans powinni wyszukiwać trasy w której pociski nie zostaną zablokowane
+6. Wszystkie postacie powinny mieć system punktów życia
+7. Gracz powinien zdobywać punkty doświadczenia lub punkty rankingowe lub punkty monetarne w zależności od późniejszych konceptów gry
+8. Postacie atakujące dystansowo powinny tworzyć pociski (prefab / particle system / raycast)
+9. Postacie atakujące dystansowo powinny atakować jedynie cele w zasięgu wzroku
+
+
+
+Funkcje dodatkowe jeśli starczy czasu i skilla
+1. Umiejętności specjalne dla gracza
+2. Boss fights
+3. Proceduralne generowanie poziomów

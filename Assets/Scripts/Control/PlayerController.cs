@@ -25,22 +25,23 @@ namespace Magicko.Control
             if(xPosInput != 0 || zPosInput != 0)
             {
                 //Moving the character
+                GetComponent<TargetFinder>().target = null;
                 GetComponent<MovementHandler>().MoveAction(new Vector3(transform.position.x + xPosInput, transform.position.y, transform.position.z + zPosInput));
-                Debug.Log("Character is moving");
                 return true;
             }
             else
             {
-                Debug.Log("Character is standing");
                 return false;
             }
         }
 
         private bool HandleCombat()
         {
+            // Getting the closest target from TargetFinder component
             var target = GetComponent<TargetFinder>().target;
             if(target != null)
             {
+                // Triggers the attack method of CombatHandler component
                 GetComponent<CombatHandler>().Attack(target);
                 return true;
             }
