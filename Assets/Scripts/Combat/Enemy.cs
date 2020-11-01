@@ -6,6 +6,6 @@ namespace Magicko.Combat
 {
     public class Enemy : MonoBehaviour
     {
-
+        
     }
 }
