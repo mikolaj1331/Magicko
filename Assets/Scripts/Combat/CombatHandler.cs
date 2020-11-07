@@ -71,7 +71,11 @@ namespace Magicko.Combat
         //Animation event
         void Hit()
         {
-
+            if(!isMelee)
+            {
+                Vector3 offset = new Vector3(transform.forward.x + 0.1f, 1, transform.forward.z + 0.1f);
+                GetComponent<RangeAttackHandler>().InstantiateProjectile(transform.position + offset, transform.rotation);
+            }
         }
         
         public void CancelAction()

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7669061216149387919}
   - component: {fileID: 891190944}
   - component: {fileID: 891190945}
+  - component: {fileID: 168672546}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -160,6 +161,19 @@ MonoBehaviour:
   weaponRange: 5
   attackCooldown: 2
   isMelee: 0
+--- !u!114 &168672546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677245686438361255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51e89b4a51cd514db4a7cb48e7a3c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2854839961207193270, guid: 7b9762315626893478fc5e66a506c720, type: 3}
 --- !u!1001 &2561493445348484593
 PrefabInstance:
   m_ObjectHideFlags: 0
