@@ -11,6 +11,7 @@ namespace Magicko.Combat
         public void InstantiateProjectile(Vector3 startingPos, Quaternion rotation)
         {
             var projectile = Instantiate(projectilePrefab,startingPos,rotation);
+            Destroy(projectile.gameObject,5f);
         }
     }
 }

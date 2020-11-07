@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,15 @@ namespace Magicko.Combat
         private void Update()
         {
             SetTarget();
+            CheckTargetList();
+        }
+
+        private void CheckTargetList()
+        {
+            if(enemiesInRange.Length == 0)
+                {
+                    target = null;
+                }
         }
 
         private void SetTarget()

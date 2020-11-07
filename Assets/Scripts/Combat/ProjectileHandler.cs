@@ -35,6 +35,12 @@ namespace Magicko.Combat
         {
             Destroy(gameObject, particleSystemFx.main.duration);
         }
+
+        private void OnTriggerEnter(Collider other) 
+        {
+            Destroy(gameObject, particleSystemFx.main.duration);
+            other.GetComponent<HealthManager>().TakeDamage(50);
+        }
     }
 }
 

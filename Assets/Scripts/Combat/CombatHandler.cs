@@ -76,6 +76,10 @@ namespace Magicko.Combat
                 Vector3 offset = new Vector3(transform.forward.x + 0.1f, 1, transform.forward.z + 0.1f);
                 GetComponent<RangeAttackHandler>().InstantiateProjectile(transform.position + offset, transform.rotation);
             }
+            else
+            {
+                target.GetComponent<HealthManager>().TakeDamage(25);
+            }
         }
         
         public void CancelAction()
