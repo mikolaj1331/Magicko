@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystemFx: {fileID: 7073378468076355018, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
-  parent: {fileID: 6279365370238950809}
-  projectileSpeed: 5
+  projectileSpeed: 10
 --- !u!1001 &4641586083529959535
 PrefabInstance:
   m_ObjectHideFlags: 0

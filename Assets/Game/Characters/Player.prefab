@@ -160,9 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2515702cb8c589d47af6f0afe91da0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 10
+  weaponRange: 15
   attackCooldown: 2
   isMelee: 0
+  target: {fileID: 0}
 --- !u!114 &168672546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 500
+  isAlive: 1
 --- !u!54 &8247381345590740249
 Rigidbody:
   m_ObjectHideFlags: 0
