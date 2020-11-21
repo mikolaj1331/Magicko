@@ -15,14 +15,14 @@ namespace Magicko.Combat
         [SerializeField] float attackCooldown = 1f;
         [SerializeField] bool isMelee;
 
-        Transform target;
+        [SerializeField] Transform target;
         float timeBetweenAttacks = 0;
 
         private void Update() 
         {
             // Each frame increases the delay since last attack
             timeBetweenAttacks += Time.deltaTime;
-            if(target != null)
+            if(target != null && target.GetComponent<HealthManager>().isAlive)
             {
                 if(isMelee)
                 // If gameObject is set to melee it will automaticly move withing range of the target

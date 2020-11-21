@@ -12,6 +12,8 @@ namespace Magicko.Combat
     {
         [SerializeField] float hitPoints = 100f;
 
+        public bool isAlive = true;
+
         public void TakeDamage(float damage)
         {
             hitPoints -= damage;
@@ -22,6 +24,7 @@ namespace Magicko.Combat
 
         private void StartDeathSequence()
         {
+            isAlive = false;
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<MovementHandler>().enabled = false;
