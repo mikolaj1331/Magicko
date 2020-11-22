@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using Magicko.Core;
 
 namespace Magicko.Combat
 {

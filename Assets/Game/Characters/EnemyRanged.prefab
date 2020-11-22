@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8802050716556543322}
   - component: {fileID: 4331412183971128426}
   - component: {fileID: 2809327136201767432}
+  - component: {fileID: 2363016370069686732}
   m_Layer: 0
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2515702cb8c589d47af6f0afe91da0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 12.5
+  weaponRange: 10
   attackCooldown: 3
   isMelee: 0
   target: {fileID: 0}
@@ -136,8 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1c856aebe1d754182259c4fdc6162a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  detectRange: 12.5
 --- !u!114 &4584764529045992047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
-  isAlive: 1
 --- !u!54 &2809327136201767432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,6 +191,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2363016370069686732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872535969068073786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a556ef629920613499ecc3f60528f535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectRange: 10
 --- !u!1001 &2262532605024248376
 PrefabInstance:
   m_ObjectHideFlags: 0

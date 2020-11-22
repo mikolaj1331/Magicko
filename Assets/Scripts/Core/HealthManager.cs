@@ -3,16 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Magicko.Movement;
-using UnityEngine.AI;
-
-namespace Magicko.Combat
+namespace Magicko.Core
 {
     public class HealthManager : MonoBehaviour
     {
         [SerializeField] float hitPoints = 100f;
 
-        public bool isAlive = true;
+        bool isDead = false;
+
+        public bool IsDead { get => isDead; set => isDead = value; }
 
         public void TakeDamage(float damage)
         {
@@ -24,14 +23,16 @@ namespace Magicko.Combat
 
         private void StartDeathSequence()
         {
-            isAlive = false;
+            if (isDead) return;
+
+            isDead = true;
             GetComponent<Animator>().SetTrigger("die");
-            GetComponent<CapsuleCollider>().enabled = false;
-            GetComponent<MovementHandler>().enabled = false;
-            GetComponent<CombatHandler>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
             Destroy(GetComponent<Rigidbody>());
-            Destroy(GetComponent<Enemy>());
+            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<ActionsManager>().CancelCurrentAction();
         }
     }
 }
+
+//TODO: (SOLVED) After enemy death player does not update their enemies list 
+//and doesnt change the target (possible due to Enemy script being active

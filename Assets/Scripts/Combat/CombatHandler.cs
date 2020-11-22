@@ -5,7 +5,6 @@ using UnityEngine;
 
 using Magicko.Movement;
 using Magicko.Core;
-using UnityEngine.AI;
 
 namespace Magicko.Combat
 {
@@ -15,20 +14,28 @@ namespace Magicko.Combat
         [SerializeField] float attackCooldown = 1f;
         [SerializeField] bool isMelee;
 
-        [SerializeField] Transform target;
-        float timeBetweenAttacks = 0;
+        [SerializeField] HealthManager target;
+        float timeBetweenAttacks = Mathf.Infinity;
+        Animator animator;
+
+        void Start()
+        {
+            animator = GetComponent<Animator>();
+        }
 
         private void Update() 
         {
             // Each frame increases the delay since last attack
             timeBetweenAttacks += Time.deltaTime;
-            if(target != null && target.GetComponent<HealthManager>().isAlive)
+            if(target != null && !target.GetComponent<HealthManager>().IsDead)
             {
                 if(isMelee)
                 // If gameObject is set to melee it will automaticly move withing range of the target
-                    GetComponent<MovementHandler>().MoveTowards(target.position);
+                    GetComponent<MovementHandler>().MoveTowards(target.transform.position);
+
                 // Calculates the distance between gameObject.transform.position and target.position
-                float distanceToTarget = Vector3.Distance(transform.position,target.position);
+                float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
                 // Checks if the target is withing weapon range
                 if(distanceToTarget < weaponRange)
                 {
@@ -44,28 +51,28 @@ namespace Magicko.Combat
         {
             if(timeBetweenAttacks >= attackCooldown)
             {
+                // Rotates the gameobject towards the target
+                gameObject.transform.LookAt(new Vector3(target.transform.position.x, 0, target.transform.position.z));
+
                 // Triggers the attack state in character animator
-                GetComponent<Animator>().SetTrigger("attack");
+                StartAttack();
+
                 // Resets the attack delay
                 timeBetweenAttacks = 0;
             }
         }
 
-        public void Attack(Transform targetPosition)
+        private void StartAttack()
+        {
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
+        }
+
+        public void Attack(GameObject targetToAttack)
         {
             // Sets this action as active
             GetComponent<ActionsManager>().BeginAction(this);
-            target = targetPosition;
-            //gameObject.transform.LookAt(new Vector3(target.position.x,0,target.position.z));
-            FaceTarget();
-        }
-
-        void FaceTarget()
-        {
-            Vector3 directionToFace = (target.position - transform.position).normalized;
-            Quaternion lookingRotation = Quaternion.LookRotation(new Vector3(directionToFace.x,0,directionToFace.z));
-            float rotationSpeed = GetComponent<NavMeshAgent>().angularSpeed;
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookingRotation, rotationSpeed * Time.deltaTime);
+            target = targetToAttack.GetComponent<HealthManager>();
         }
 
         //Animation event
@@ -78,13 +85,28 @@ namespace Magicko.Combat
             }
             else
             {
+                if (target == null) return;
                 target.GetComponent<HealthManager>().TakeDamage(25);
             }
+        }
+
+        public bool isTargetable(GameObject target)
+        {
+            if (target == null) return false;
+            HealthManager health = target.GetComponent<HealthManager>();
+            return health != null && !health.IsDead;
         }
         
         public void CancelAction()
         {
+            CancelAttack();
             target = null;
+        }
+
+        private void CancelAttack()
+        {
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
         }
     }
 }

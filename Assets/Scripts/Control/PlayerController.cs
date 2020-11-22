@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityStandardAssets.CrossPlatformInput;
+
 using Magicko.Movement;
 using Magicko.Combat;
-using System;
+using Magicko.Core;
 
 namespace Magicko.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        HealthManager healthManager;
+
+        private void Start()
+        {
+            healthManager = GetComponent<HealthManager>();    
+        }
+
         void Update()
         {
+            if (healthManager.IsDead) return;
             if(HandleMovement()) return;
             if(HandleCombat()) return;
         }
@@ -42,7 +52,7 @@ namespace Magicko.Control
             if(target != null)
             {
                 // Triggers the attack method of CombatHandler component
-                GetComponent<CombatHandler>().Attack(target);
+                GetComponent<CombatHandler>().Attack(target.gameObject);
                 return true;
             }
             else

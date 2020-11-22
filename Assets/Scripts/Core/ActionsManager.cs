@@ -15,5 +15,10 @@ namespace Magicko.Core
             }
             currentAction = action;
         }
+
+        public void CancelCurrentAction()
+        {
+            BeginAction(null);
+        }
     }
 }
