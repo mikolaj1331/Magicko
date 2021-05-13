@@ -7,9 +7,10 @@ using UnityEngine;
 [SelectionBase]
 public class BlockEditor : MonoBehaviour
 {
-    Vector2Int positionInGrid;
-    const int sizeOfGrid = 3;
 
+    [SerializeField] int sizeOfGrid = 3;
+    Vector2Int positionInGrid;
+    
     // Update is called once per frame
     void Update()
     {
