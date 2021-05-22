@@ -56,6 +56,6 @@ namespace Magicko.Movement
     }
 }
 
-//TODO: NavMeshAgent rotates the player upon arrival at the destination
+//TODO: (SOLVED) NavMeshAgent rotates the player upon arrival at the destination
 //Solution: The navigator couldn't reach the exact value of float variable due to specifics of this variable,
 //increased stopping distance parameter to stop the navigator from looking for perfect position

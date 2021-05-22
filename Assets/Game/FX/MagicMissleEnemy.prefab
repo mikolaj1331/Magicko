@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6279365370238950812}
   - component: {fileID: 6279365370238950813}
   m_Layer: 0
-  m_Name: MagicMissle
-  m_TagString: Untagged
+  m_Name: MagicMissleEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalPosition: {x: 1.2877331, y: 1.4647563, z: -4.2139993}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
-  - {fileID: 6211545289293113676}
+  - {fileID: 5905029161716315147}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,13 +111,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleSystemFx: {fileID: 7073378468076355018, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
   projectileSpeed: 10
---- !u!1001 &4641586083529959535
+--- !u!1001 &5164237650568049960
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 6279365370238950809}
     m_Modifications:
+    - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -131,6 +135,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -140,14 +148,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
@@ -164,12 +164,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846952354113901353, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
       propertyPath: m_Name
-      value: MagicMissleFX
+      value: MagicMissleFX_Red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
---- !u!4 &6211545289293113676 stripped
+--- !u!4 &5905029161716315147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1610580526658355491, guid: e54b4d4266a34ac4c8fd073df6c41a78, type: 3}
-  m_PrefabInstance: {fileID: 4641586083529959535}
+  m_PrefabInstance: {fileID: 5164237650568049960}
   m_PrefabAsset: {fileID: 0}
