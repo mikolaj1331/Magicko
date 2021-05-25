@@ -52,7 +52,7 @@ namespace Magicko.Combat
             if(timeBetweenAttacks >= attackCooldown)
             {
                 // Rotates the gameobject towards the target
-                gameObject.transform.LookAt(new Vector3(target.transform.position.x, 0, target.transform.position.z));
+                gameObject.transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
 
                 // Triggers the attack state in character animator
                 StartAttack();
@@ -64,6 +64,7 @@ namespace Magicko.Combat
 
         private void StartAttack()
         {
+            animator.fireEvents = true;
             animator.ResetTrigger("stopAttack");
             animator.SetTrigger("attack");
         }
@@ -80,6 +81,7 @@ namespace Magicko.Combat
         {
             if(!isMelee)
             {
+                transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
                 Vector3 offset = new Vector3(transform.forward.x + 0.1f, 1, transform.forward.z + 0.1f);
                 GetComponent<RangeAttackHandler>().InstantiateProjectile(transform.position + offset, transform.rotation);
             }
@@ -105,6 +107,7 @@ namespace Magicko.Combat
 
         private void CancelAttack()
         {
+            animator.fireEvents = false;
             animator.ResetTrigger("attack");
             animator.SetTrigger("stopAttack");
         }

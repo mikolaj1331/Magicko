@@ -66,7 +66,7 @@ Animator:
   m_GameObject: {fileID: 5677245686438361255}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd7d68a65822e4a44a9ef78850e64cfc, type: 3}
-  m_Controller: {fileID: 9100000, guid: b53dc22dc16055142970636d5afd51f4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 83193c9943773964d8e18c0f67cdfe9c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 10
-  attackCooldown: 2
+  attackCooldown: 1.5
   isMelee: 0
   target: {fileID: 0}
 --- !u!114 &168672546
