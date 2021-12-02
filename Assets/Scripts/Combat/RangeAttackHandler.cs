@@ -8,9 +8,10 @@ namespace Magicko.Combat
     {
         [SerializeField] ProjectileHandler projectilePrefab;
 
-        public void InstantiateProjectile(Vector3 startingPos, Quaternion rotation)
+        public void InstantiateProjectile(Vector3 startingPos, Quaternion rotation, float damage)
         {
             var projectile = Instantiate(projectilePrefab,startingPos,rotation);
+            projectile.SetDamage(damage);
             Destroy(projectile.gameObject,5f);
         }
     }

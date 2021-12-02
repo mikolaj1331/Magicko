@@ -12,6 +12,8 @@ namespace Magicko.Combat
         [SerializeField] ParticleSystem particleSystemFx;
         [SerializeField] float projectileSpeed = 0.01f;
 
+        float damage = 0;
+
         public Vector3 direction = Vector3.forward;
 
         private void Start() 
@@ -35,9 +37,14 @@ namespace Magicko.Combat
 
         private void OnTriggerEnter(Collider other) 
         {
-            if (other.CompareTag(this.tag)) return;
+            if (other.CompareTag(this.tag) || other.CompareTag("Weapon")) return;
             Destroy(gameObject, particleSystemFx.main.duration);
-            other.GetComponent<HealthManager>().TakeDamage(50);
+            other.GetComponent<HealthManager>().TakeDamage(damage);
+        }
+
+        public void SetDamage(float damage)
+        {
+            this.damage = damage;
         }
     }
 }

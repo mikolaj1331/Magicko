@@ -10,6 +10,7 @@ namespace Magicko.Combat
 {
     public class CombatHandler : MonoBehaviour, IAction
     {
+        [SerializeField] float weaponDamage = 60f;
         [SerializeField] float weaponRange = 20f;
         [SerializeField] float attackCooldown = 1f;
         [SerializeField] bool isMelee;
@@ -83,12 +84,12 @@ namespace Magicko.Combat
             {
                 transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
                 Vector3 offset = new Vector3(transform.forward.x + 0.1f, 1, transform.forward.z + 0.1f);
-                GetComponent<RangeAttackHandler>().InstantiateProjectile(transform.position + offset, transform.rotation);
+                GetComponent<RangeAttackHandler>().InstantiateProjectile(transform.position + offset, transform.rotation,weaponDamage);
             }
             else
             {
                 if (target == null) return;
-                target.GetComponent<HealthManager>().TakeDamage(25);
+                target.GetComponent<HealthManager>().TakeDamage(weaponDamage);
             }
         }
 
